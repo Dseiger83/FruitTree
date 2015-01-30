@@ -1,13 +1,21 @@
 class Tree
 
+	def initialize
+		treetype = OwnerAction.SelectTree
+		startAge = 1
+		startHeight = 1
+		startHealth = 'Healthy'
+		startFruitCount = 0
+		@tree = (treeype, startAAge, startHeight, startHealth, startFruitCount)
+	end
+
+
 	def Height?
 		return @height		
 	end
 
-	def Fruit?
+	def Fruit
 		return @fruit
-		return @count
-		return @ripe
 	end
 
 	def Age?
@@ -16,6 +24,10 @@ class Tree
 
 	def Health?
 		@health
+	end
+
+	def FruitCount
+		@FruitCount
 	end
 
 end

@@ -5,26 +5,18 @@ require_relative 'Tree'
 
 class OwnerAction
 
-	def initialize
-		GetOwnerName()
-	end
-
-	def GetOwnerName()
-		name = GetName()
-	end
-
-	def GetName()
+	def self.GetName()
 		name = FormPrompter.AskUser 'What is your name?'
 
 		if (name == name.emty? or name == name.nil)
 			GetName()
 		else
 			FormPrompter.DisplayFormatString('Welcome %s. Let\'s start carring for your tree!' [name.to_s])
-			Owner.Name? = name
 		end
+		return name 
 	end
 
-	def GetFruit()
+	def self.GetFruit()
 		pick = FormPrompter.AskUser 'Do you wish to pick some fruit?'
 
 		if (pick.downcase != 'yes' or != 'no')
@@ -35,15 +27,25 @@ class OwnerAction
 		end
 	end
 
-	def GetQuantity()
+	def self.GetQuantity(Tree)
 		quantity = FormPrompter.AskUser 'How many do you wish to pick?'
 
-		if (quantity < 0 or >Tree.FruitCount)
-			FormPrompter.DisplayFormatString('Please enter a number greater than 0 and less than or equal to %s.' [Tree.FruitCount])
+		if (quantity < 0 or >FruitCount)
+			FormPrompter.DisplayFormatString('Please enter a number greater than 0 and less than or equal to %s.' [FruitCount])
 			GetQuantity()
 		else
-			Tree.FruitCount = (quantity - Tree.FruitCount)
+			FruitCount = (quantity - TFruitCount)
 			Fruit.Ripe?
+		end
+		return FruitCount
+	end
+
+	def self.SelectTree
+		choices = (Fruit.Type?) 
+		choose = FormPrompter.AskUser 'What type of tree would you like to buy?' + choices.inpsect
+		if (Fruit.Type?.include choose.capitalize)
+			return Tree.new(choose)
+		else self.SelectTree
 		end
 	end
 

@@ -4,8 +4,13 @@ require_relative 'FormPrompter'
 
 class Owner
 
+	def initialize
+		@name = OwnerAction.GetName
+		@tree = OwnerAction.SelectTree
+	end
+
 	def Name?
-		return @name
+		return @name 
 	end
 
 	def Water
