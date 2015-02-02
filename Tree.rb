@@ -9,7 +9,6 @@ class Tree
 		@tree = (treeype, startAAge, startHeight, startHealth, startFruitCount)
 	end
 
-
 	def Height?
 		return @height		
 	end
